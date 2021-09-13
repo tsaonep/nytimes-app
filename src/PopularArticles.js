@@ -1,6 +1,5 @@
 import './App.css';
 import React,{useState, useEffect } from 'react'
-import axios from 'axios';
 
 const PopularArticles =() => {
 
@@ -33,25 +32,29 @@ catch (error) {
     <h1>NEW YORK TIMES MOST RECENT ARTICLES</h1>
     <section>
             {articles.map ((article) => {
- const {abstract, adx_keywords,
-   byline,assert_id,published_date, 
-   section,titles,type, updated,url} =article
+ const {abstract, 
+    byline,
+    assert_id,
+    published_date,
+    section,
+    title,
+    updated,
+    url} =article
 
    return(
     
-    <article key="assert_id"> 
-    
-    <h2><b>{titles}</b></h2>
-    <p>{abstract}</p>
+     <div className='articleDiv'>
+
+     <article key="assert_id"> 
+     <h2>{title}</h2>
+    <p>Abstract: {abstract}</p>
      <p>{byline}</p>
      <p>{section}</p>
-     <p>{published_date}</p>
-     <p>{updated}</p>
+     <p>Published Date: {published_date}</p>
+     <p>Updated: {updated}</p>
      <p>{url}</p>
-
-
-  
-    </article>
+      </article>
+      </div>
    )
       })}
 
