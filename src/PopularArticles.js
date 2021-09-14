@@ -11,22 +11,23 @@ const PopularArticles =() => {
   
  useEffect(() => {
     const fetchArticles = async() =>{
-    try {
-      const res = await 
- fetch(
-    'https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=GVjE3dH9M9S4YaMGBRjPdGS5ELXaZGnq')
-   
-const articles= await res.json()
-console.log(articles)
-setArticles(articles.results)
-  }
-catch (error) {
-  console.error(error);
-}
-   }
+      try {
+        const res = await 
+          fetch(
+                'https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=GVjE3dH9M9S4YaMGBRjPdGS5ELXaZGnq')
+      
+                  const articles= await res.json()
+                  console.log(articles)
+                  setArticles(articles.results)
+
+                    }
+      catch (error) {
+                  console.error(error);
+        }
+    }
    fetchArticles()
 
- },[])
+    },[])
  
  
  return (
@@ -52,9 +53,12 @@ catch (error) {
           <Card style={{ width: '100%' }}>
           <Card.Header style={{background:'magnolia'}}><h1>{title}</h1></Card.Header>
               <Card.Body>
-                <Card.Title></Card.Title>
+                <Card.Title>  {abstract} </Card.Title>
                 <Card.Text>
-                {abstract}
+                      Published Date: {published_date}
+                 </Card.Text>
+                <Card.Text>
+                   Updated: {updated}
                 </Card.Text>
                 <Button variant="primary"> <a style ={{color:'white'}}  href= {url} target="_blank" >READ MORE</a></Button>
               </Card.Body>
@@ -62,7 +66,8 @@ catch (error) {
             </Card>
             
         </div>
-        {/* <article key="assert_id"> 
+       
+{/* <article key="assert_id"> 
             <h2>{title}</h2>
             <p>Abstract: {abstract}</p>
             <p>{byline}</p>
